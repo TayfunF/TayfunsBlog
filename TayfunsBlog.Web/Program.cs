@@ -5,6 +5,7 @@ using TayfunsBlog.Core.UnitOfWorks;
 using TayfunsBlog.Repository;
 using TayfunsBlog.Repository.Repositories;
 using TayfunsBlog.Repository.UnitOfWorks;
+using TayfunsBlog.Service.Mapping;
 using TayfunsBlog.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IService<>), (typeof(Service<>)));
-
+builder.Services.AddAutoMapper(typeof(MapProfile));
 
 builder.Services.AddDbContext<AppDbContext>(
             options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection").UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
