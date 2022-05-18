@@ -24,5 +24,16 @@ namespace TayfunsBlog.Web.Controllers
 
             return View(PostsDtosOrderBy);
         }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+            int Id = Convert.ToInt32(id);
+            var GetPostId = await _postService.GetByIdAsync(Id);
+            var GetPostIdDto = _mapper.Map<PostDto>(GetPostId);
+
+            return View(GetPostIdDto);
+        }
     }
 }

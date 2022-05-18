@@ -17,7 +17,7 @@
                                 <div class="l_g_r">
                                     <div class="dapibus">
                                         <h2>@item.Title.ToUpper()</h2>
-                                        <p class="adm">Yazar <a href="#">Tayfun</a>  |  @item.CreatedDate.ToString("hh MMM yyyy")</p>
+                                        <p class="adm">Yazar <a href="#">Tayfun</a>  |  @item.CreatedDate.ToString("HH MMM yyyy")</p>
                                         <a asp-action="Details" asp-route-id="@item.Id"><img src="~/web/images/@item.Image" class="img-responsive" alt=""></a>
                                         <p>@item.Content</p>
                                         <a asp-action="Details" asp-route-id="@item.Id" class="link">Devamını Oku</a>
