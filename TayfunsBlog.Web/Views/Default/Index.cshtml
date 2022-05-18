@@ -1,4 +1,6 @@
-﻿@{
+﻿@model List<PostDto>
+
+@{
     ViewData["Title"] = "Ana Sayfa";
 }
 
@@ -9,38 +11,19 @@
                 <!-- These are our grid blocks -->
                 <li>
                     <div class="l_g">
-                        <div class="col-md-3 praesent">
-                            <div class="l_g_r">
-                                <div class="dapibus">
-                                    <h2>Praesent dapibusneque id cursus faucioibus tortor neque tiegetas augue</h2>
-                                    <p class="adm">Posted by <a href="#">Admin</a>  |  7 days ago</p>
-                                    <a href="details.html"><img src="~/web//img1.jpg" class="img-responsive" alt=""></a>
-                                    <p>Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate. </p>
-                                    <a href="details.html" class="link">Read More</a>
+                        <div class="col-md-9 praesent">
+                            @foreach (var item in Model)
+                            {
+                                <div class="l_g_r">
+                                    <div class="dapibus">
+                                        <h2>@item.Title.ToUpper()</h2>
+                                        <p class="adm">Yazar <a href="#">Tayfun</a>  |  @item.CreatedDate.ToString("hh MMM yyyy")</p>
+                                        <a asp-action="Details" asp-route-id="@item.Id"><img src="~/web/images/@item.Image" class="img-responsive" alt=""></a>
+                                        <p>@item.Content</p>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="link">Devamını Oku</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 integ">
-                            <div class="l_g_r">
-                                <div class="integer">
-                                    <h3>Integer vitae libero ac risus egestas</h3>
-                                    <p class="adm">Posted by <a href="#">Admin</a>  |  7 days ago</p>
-                                    <a href="details.html"><img src="~/web/images/img3.jpg" class="img-responsive" alt=""></a>
-                                    <p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel ipsum dolor.</p>
-                                    <a href="details.html" class="link">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 integ">
-                            <div class="l_g_r">
-                                <div class="dapibus">
-                                    <h3>Integer vitae libero risus egestas</h3>
-                                    <p class="adm">Posted by <a href="#">Admin</a>  |  7 days ago</p>
-                                    <a href="details.html"><img src="~/web/images/2222.jpg" class="img-responsive" alt=""></a>
-                                    <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilis</p>
-                                    <a href="details.html" class="link">Read More</a>
-                                </div>
-                            </div>
+                            }
                         </div>
                         <div class="col-md-3 integ">
                             <div class="l_g_r">
